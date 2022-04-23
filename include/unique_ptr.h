@@ -5,12 +5,13 @@ class UniquePtr
 {
 public:
     UniquePtr(T *);
-    /* UniquePtr();
-     ~UniquePtr();
-     friend T *make_unique(T);*/
+    UniquePtr();
+    ~UniquePtr();
 
 private:
     T *_p;
 };
+template <typename T>
+T *make_unique(T);
 #include "unique_ptr.hpp"
 #endif // UNIQUE_PTR
