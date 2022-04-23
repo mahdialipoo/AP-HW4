@@ -7,6 +7,7 @@ public:
     UniquePtr(T *);
     UniquePtr();
     ~UniquePtr();
+    UniquePtr(const UniquePtr<T> &);
 
 private:
     T *_p;
