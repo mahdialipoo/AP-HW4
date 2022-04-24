@@ -6,8 +6,17 @@ class UniquePtr
 public:
     UniquePtr(T *);
     UniquePtr();
-    ~UniquePtr();
     UniquePtr(const UniquePtr<T> &);
+    ~UniquePtr();
+    T *get();
+    T operator*();
+    void reset();
+    UniquePtr<T> operator=(const UniquePtr<T> &);
+    void reset(T *);
+    operator bool();
+    T *operator->();
+    T *release();
+    //  UniquePtr(const UniquePtr<T> &);
 
 private:
     T *_p;
