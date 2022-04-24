@@ -16,7 +16,6 @@ public:
     operator bool();
     T *operator->();
     T *release();
-    //  UniquePtr(const UniquePtr<T> &);
 
 private:
     T *_p;

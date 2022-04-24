@@ -1,5 +1,6 @@
 #ifndef SHARED_PTR
 #define SHARED_PTR
+#include <map>
 template <typename T>
 class SharedPtr
 {
@@ -12,11 +13,14 @@ public:
     void reset();
     void reset(T *);
     operator bool();
+    SharedPtr(const SharedPtr<T> &);
+    SharedPtr<T> &operator=(const SharedPtr<T> &);
     T *operator->();
+    size_t use_count();
 
 private:
     T *_p;
-    size_t cn;
+    inline static std::map<T *, size_t> cnts;
 };
 template <typename T>
 T *make_shared(T);

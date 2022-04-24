@@ -1,14 +1,15 @@
 #include <iostream>
 #include <gtest/gtest.h>
-
-
+#include "unique_ptr.h"
+#include "shared_ptr.h"
 int main(int argc, char **argv)
 {
-    if (true) // make false to run unit-tests
+    if (0) // make false to run unit-tests
     {
-        // debug section 
-        
+        // debug section
+        std::cout << "hjh" << std::endl;
     }
+
     else
     {
         ::testing::InitGoogleTest(&argc, argv);
@@ -19,5 +20,5 @@ int main(int argc, char **argv)
         else
             std::cout << "FAILED" << std::endl;
     }
-    return 0;   
+    return 0;
 }
