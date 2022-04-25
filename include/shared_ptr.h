@@ -8,10 +8,9 @@ public:
     SharedPtr(T *);
     SharedPtr();
     ~SharedPtr();
-    T *get();
+    T *&get();
     T operator*();
-    void reset();
-    void reset(T *);
+    void reset(T * = nullptr);
     operator bool();
     SharedPtr(const SharedPtr<T> &);
     SharedPtr<T> &operator=(const SharedPtr<T> &);

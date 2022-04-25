@@ -11,6 +11,7 @@ add_executable(main
         src/main.cpp
         src/unit_test.cpp
 )
+
 target_link_libraries(main
         GTest::GTest
         GTest::Main

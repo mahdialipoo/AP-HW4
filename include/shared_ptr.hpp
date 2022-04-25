@@ -1,10 +1,11 @@
 template <typename T>
 SharedPtr<T>::SharedPtr(T *p) : _p{p}
 {
-    if (cnts.count(_p) == 0)
-        cnts[_p] = 1;
-    else
-        cnts[_p]++;
+    if (p)
+        if (cnts.count(_p) == 0)
+            cnts[_p] = 1;
+        else
+            cnts[_p]++;
 }
 template <typename T>
 T *make_shared(T x) { return new T{x}; }
@@ -13,8 +14,7 @@ SharedPtr<T>::SharedPtr() : SharedPtr<T>(nullptr) {}
 template <typename T>
 SharedPtr<T>::~SharedPtr()
 {
-    cnts[_p]--;
-    if (_p != nullptr && !(cnts[_p]))
+    if (_p && !(--cnts[_p]))
         delete _p;
     _p = nullptr;
 }
@@ -32,25 +32,19 @@ SharedPtr<T> &SharedPtr<T>::operator=(const SharedPtr<T> &p)
     return *this;
 }
 template <typename T>
-T *SharedPtr<T>::get()
+T *&SharedPtr<T>::get()
 {
     return _p;
 }
 template <typename T>
-void SharedPtr<T>::reset()
+void SharedPtr<T>::reset(T *x)
 {
-    if (_p != nullptr)
-    {
-        cnts[_p]--;
+    if (_p && !(--cnts[_p]))
         delete _p;
-    }
-    _p = nullptr;
-}
-template <typename T>
-void SharedPtr<T>::reset(T *x) //*************incomplete
-{
-    cnts[_p]--;
-    cnts[x]++;
+    if (x && cnts.count(x) == 0)
+        cnts[x] = 1;
+    else if (x)
+        cnts[x]++;
     _p = x;
 }
 template <typename T>
