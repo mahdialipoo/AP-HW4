@@ -4,10 +4,9 @@
 #include "shared_ptr.h"
 int main(int argc, char **argv)
 {
-    if (0) // make false to run unit-tests
+    if (false) // make false to run unit-tests
     {
         // debug section
-        std::cout << "hjh" << std::endl;
     }
 
     else

@@ -7,20 +7,8 @@ UniquePtr<T>::UniquePtr() : UniquePtr<T>(nullptr) {}
 template <typename T>
 UniquePtr<T>::~UniquePtr()
 {
-    // std::cout << "destruct" << std::endl;
     if (_p != nullptr)
         delete _p;
-}
-template <typename T>
-UniquePtr<T>::UniquePtr(const UniquePtr<T> &p)
-{
-    throw std::logic_error("error");
-}
-template <typename T>
-UniquePtr<T> UniquePtr<T>::operator=(const UniquePtr<T> &p)
-{
-    delete p;
-    return p;
 }
 template <typename T>
 T *UniquePtr<T>::get()

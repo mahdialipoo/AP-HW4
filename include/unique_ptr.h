@@ -6,12 +6,12 @@ class UniquePtr
 public:
     UniquePtr(T *);
     UniquePtr();
-    UniquePtr(const UniquePtr<T> &);
+    UniquePtr(const UniquePtr<T> &) = delete;
     ~UniquePtr();
     T *get();
     T operator*();
     void reset();
-    UniquePtr<T> operator=(const UniquePtr<T> &);
+    UniquePtr<T> operator=(const UniquePtr<T> &) = delete;
     void reset(T *);
     operator bool();
     T *operator->();
